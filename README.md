@@ -101,7 +101,7 @@ GROQ_API_KEY=your_groq_api_key
 Start the server:
 
 ```bash
-python server.py
+python mcp_server.py
 ```
 
 The server communicates using the **STDIO transport**, making it compatible with MCP clients such as Claude Desktop, Cursor, Cline, Continue, and other MCP-compatible applications.
