@@ -512,7 +512,7 @@ def validate_startup_idea(
 
 @mcp.tool(
     name="All-In-One Startup Report",
-    description="Provides a comprehensive evaluation of a given startup idea."
+    description="Provides a general comprehensive evaluation of a given startup idea."
 )
 def validate_startup_idea(
     name: str = Field(description="Startup name"),

@@ -1,22 +1,220 @@
-##AI Startup Assistant
+# 🚀 AI Startup MCP
 
-Imagine founders using Claude every day.
+An AI-powered **Model Context Protocol (MCP)** server that acts as a virtual startup consultant. It helps founders, entrepreneurs, and product teams validate ideas, analyze competitors, research pricing, audit websites, and generate investor-focused insights using Large Language Models.
 
-Claude could do
+---
 
-validate startup ideas
-competitor analysis
-pricing suggestions
-landing page audits
-SEO keyword research
-investor readiness
-estimate TAM/SAM/SOM
-generate customer personas
+# ✨ Features
 
-Claude becomes a YC partner.
+* 💡 Startup Idea Validation
+* 🏆 Competitor Discovery & Analysis
+* 💰 Pricing Landscape Analysis (USD & INR)
+* 🌍 Market Research
+* 🌐 Website & Landing Page Audit
+* 📋 Suggested Product Features
+* 💼 Investor's Point of View
+* 📊 Complete Startup Report
 
- What problem does it solve? --> It helps provide direction and guidance to founders who are in confusion regarding the niche of their startups
- Who is it for? --> for confused founders
- What tasks become easier? --> all tasks involving how to convert an idea into an actual startup
- Why use this instead of Claude alone? --> this specialises and answers every question one may come up with or not, made by a founder himself
- What data does it need? --> just what you have in mind regarding your startup
+All responses are AI-generated using Groq-powered LLMs.
+
+---
+
+# 🛠️ Tech Stack
+
+* Python
+* FastMCP
+* Model Context Protocol (MCP)
+* Groq API
+* Llama 3.3 70B
+* STDIO Transport
+
+---
+
+# 📁 Project Structure
+
+```text
+AI-Startup-MCP/
+│
+├── mcp_server.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+│
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ArshZaidi/AI-Startup-MCP
+cd AI-Startup-MCP
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate it.
+
+Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file.
+
+Example:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+*Never commit your `.env` file.*
+
+---
+
+# ▶️ Running the MCP Server
+
+Start the server:
+
+```bash
+python server.py
+```
+
+The server communicates using the **STDIO transport**, making it compatible with MCP clients such as Claude Desktop, Cursor, Cline, Continue, and other MCP-compatible applications.
+
+---
+
+# 🔌 Connecting to Claude Desktop
+
+Open Claude Desktop's MCP configuration.
+
+Add your server:
+
+```json
+{
+  "mcpServers": {
+    "startup-ai": {
+      "command": "python",
+      "args": [
+        "/absolute/path/to/server.py"
+      ],
+      "env": {
+        "GROQ_API_KEY": "your_groq_api_key"
+      }
+    }
+  }
+}
+```
+
+Restart Claude Desktop.
+
+Your tools should now appear under **Connectors**, where Claude can discover and invoke them automatically. Claude Desktop supports local MCP servers through its configuration or packaged desktop extensions.
+
+---
+
+# 💻 Connecting from Cursor
+
+Cursor supports MCP servers.
+
+Add a new MCP server in Cursor's MCP settings using the same command and arguments used for Claude Desktop.
+
+After restarting Cursor, the available tools will be automatically discovered.
+
+---
+
+# 🤖 Connecting from Other MCP Clients
+
+This server follows the standard Model Context Protocol and should work with any compatible client that supports launching local MCP servers.
+
+Typical configuration requires:
+
+* Python executable
+* Path to `mcp_server.py`
+* Required environment variables
+
+---
+
+# 🧰 Available Tools
+
+| Tool                    | Description                               |
+| ----------------------- | ----------------------------------------- |
+| Startup Validation      | Evaluate startup ideas                    |
+| Competitor Analysis     | Discover competitors and compare products |
+| Pricing Analysis        | Analyze pricing landscape                 |
+| Website Audit           | UX, SEO and CRO evaluation                |
+| Suggested Features      | AI-powered product roadmap                |
+| Investor's POV          | VC-style investment analysis              |
+| Complete Startup Report | Full business analysis                    |
+
+---
+
+# 💡 Example Prompt
+
+```
+Evaluate my AI startup for students.
+
+Generate a complete startup report including:
+- Competitor analysis
+- Pricing analysis
+- Website audit
+- Investor's perspective
+```
+
+Claude will automatically invoke the relevant MCP tools.
+
+---
+
+# 🌍 Making This Server Public
+
+This repository currently provides a **local MCP server**.
+
+Anyone can:
+
+1. Clone the repository
+2. Install the dependencies
+3. Add it to their preferred MCP client
+4. Start using the tools locally
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+Feel free to open issues, submit pull requests, or suggest new startup analysis tools.
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
