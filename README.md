@@ -112,7 +112,7 @@ The server communicates using the **STDIO transport**, making it compatible with
 
 Open Claude Desktop's MCP configuration.
 
-Add your server:
+Add your server to claude_desktop_config.json:
 
 ```json
 
@@ -130,7 +130,7 @@ Add your server:
 
 ```
 
-Restart Claude Desktop.
+Restart Claude Desktop. completely.
 
 Your tools should now appear under **Connectors**, where Claude can discover and invoke them automatically. Claude Desktop supports local MCP servers through its configuration or packaged desktop extensions.
 
