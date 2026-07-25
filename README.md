@@ -115,19 +115,19 @@ Open Claude Desktop's MCP configuration.
 Add your server:
 
 ```json
+
 {
   "mcpServers": {
     "startup-ai": {
       "command": "python",
       "args": [
-        "/absolute/path/to/server.py"
-      ],
-      "env": {
-        "GROQ_API_KEY": "your_groq_api_key"
-      }
+        "/absolute/path/to/mcp_server.py"
+      ]
     }
   }
 }
+
+
 ```
 
 Restart Claude Desktop.

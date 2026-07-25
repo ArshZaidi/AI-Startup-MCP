@@ -17,7 +17,7 @@ mcp = FastMCP ("DocumentMCP", log_level="ERROR")
 #Validate startup ideas  -->
 
 @mcp.tool(
-    name="Validation of Startup Idea",
+    name="Validation-of-Startup-Idea",
     description="Performs a basic validation of a startup idea."
 )
 def validate_startup_idea(
@@ -91,10 +91,10 @@ def validate_startup_idea(
 #Competitor Analysis -->
 
 @mcp.tool(
-    name="Competitor Analysis",
+    name="Competitor-Analysis",
     description="Analyzes the competitive landscape for a given startup idea."
 )
-def validate_startup_idea(
+def competitor_analysis(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers")
@@ -161,10 +161,10 @@ def validate_startup_idea(
 #Pricing Suggestions  -->
 
 @mcp.tool(
-    name="Pricing Suggestions",
+    name="Pricing-Suggestions",
     description="Provides pricing recommendations for a given startup idea."
 )
-def validate_startup_idea(
+def pricing_suggestions(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers"),
@@ -235,10 +235,10 @@ def validate_startup_idea(
 #Landing Page Audits  -->
 
 @mcp.tool(
-    name="Landing Page Audit",
+    name="Landing-Page-Audit",
     description="Audits the landing page for a given startup idea."
 )
-def validate_startup_idea(
+def landing_page_audit(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers"),
@@ -328,10 +328,10 @@ def validate_startup_idea(
 #Suggested Features  -->
 
 @mcp.tool(
-    name="Suggested Features",
+    name="Suggested-Features",
     description="Provides suggestions for features to include in a given startup idea."
 )
-def validate_startup_idea(
+def suggested_features(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers"),
@@ -409,10 +409,10 @@ def validate_startup_idea(
 #Investor's POV  -->
 
 @mcp.tool(
-    name="Investor's POV",
+    name="Investors-POV",
     description="Provides an insight to the investor's perspective on a given startup idea."
 )
-def validate_startup_idea(
+def investor_pov(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers"),
@@ -435,7 +435,7 @@ def validate_startup_idea(
         Startup Name:
         {name}
 
-        Startup Idea:
+        Startup Idea:+
         {idea}
 
         Target Customers:
@@ -511,10 +511,10 @@ def validate_startup_idea(
 #Complete All-In-One Startup Report  -->
 
 @mcp.tool(
-    name="All-In-One Startup Report",
+    name="All-In-One-Startup-Report",
     description="Provides a general comprehensive evaluation of a given startup idea."
 )
-def validate_startup_idea(
+def all_in_one_startup_report(
     name: str = Field(description="Startup name"),
     idea: str = Field(description="Startup idea"),
     potential_customers: str = Field(description="Target customers"),
