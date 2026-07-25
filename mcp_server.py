@@ -14,7 +14,7 @@ client = Groq(
 mcp = FastMCP ("DocumentMCP", log_level="ERROR")
 
 
-#Validate startup ideas  --
+#Validate startup ideas  -->
 
 @mcp.tool(
     name="Validation of Startup Idea",
@@ -88,7 +88,7 @@ def validate_startup_idea(
     return result
 
 
-#Competitor Analysis --
+#Competitor Analysis -->
 
 @mcp.tool(
     name="Competitor Analysis",
@@ -158,7 +158,7 @@ def validate_startup_idea(
 
     return result
 
-#TODO: Pricing Suggestions
+#Pricing Suggestions  -->
 
 @mcp.tool(
     name="Pricing Suggestions",
@@ -232,7 +232,7 @@ def validate_startup_idea(
 
     return result
 
-#TODO: landing page audits
+#Landing Page Audits  -->
 
 @mcp.tool(
     name="Landing Page Audit",
@@ -325,10 +325,333 @@ def validate_startup_idea(
 
     return result
 
-#TODO: SEO keyword research
-#TODO: investor readiness
-#TODO: estimate TAM/SAM/SOM
-#TODO: generate customer personas
+#Suggested Features  -->
+
+@mcp.tool(
+    name="Suggested Features",
+    description="Provides suggestions for features to include in a given startup idea."
+)
+def validate_startup_idea(
+    name: str = Field(description="Startup name"),
+    idea: str = Field(description="Startup idea"),
+    potential_customers: str = Field(description="Target customers"),
+):
+    if not all([
+        name.strip(),
+        idea.strip(),
+        potential_customers.strip(),
+    ]):
+
+        raise ValueError("All fields are required.")
+
+    prompt = f"""
+        You are a senior product manager, startup advisor, SaaS architect, and AI consultant.
+
+        Analyze the following startup idea and suggest features that would maximize user value, engagement, retention, and monetization.
+
+        Evaluate the startup from a product perspective and recommend features based on current market trends, user expectations, and competitor standards.
+
+        Startup Name:
+        {name}
+
+        Startup Idea:
+        {idea}
+
+        Target Customers:
+        {potential_customers}
+
+        Generate:
+
+        - Core MVP features
+        - Advanced/Premium features
+        - AI-powered feature suggestions
+        - Features that differentiate the startup from competitors
+        - User engagement & retention features
+        - Revenue-generating features
+        - Future roadmap features
+        - Technical complexity (Low/Medium/High) for each feature
+        - Priority (Must Have / Nice to Have / Future)
+
+        Return ONLY a JSON object with these fields:
+
+        Core Features
+        Premium Features
+        AI Features
+        Competitive Advantages
+        Feature Roadmap
+        Recommendations
+    """
+
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an expert startup advisor."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.3,
+        response_format={"type": "json_object"},
+    )
+
+    try:
+        result = json.loads(response.choices[0].message.content)
+    except json.JSONDecodeError:
+        raise ValueError("LLM returned invalid JSON.")
+
+    return result
+
+#Investor's POV  -->
+
+@mcp.tool(
+    name="Investor's POV",
+    description="Provides an insight to the investor's perspective on a given startup idea."
+)
+def validate_startup_idea(
+    name: str = Field(description="Startup name"),
+    idea: str = Field(description="Startup idea"),
+    potential_customers: str = Field(description="Target customers"),
+):
+    if not all([
+        name.strip(),
+        idea.strip(),
+        potential_customers.strip(),
+    ]):
+
+        raise ValueError("All fields are required.")
+
+    prompt = f"""
+        You are a senior venture capitalist, startup advisor, angel investor, and business strategist.
+
+        Evaluate the following startup from an investor's perspective.
+
+        Analyze whether this startup would be attractive for Pre-Seed, Seed, or Series A funding.
+
+        Startup Name:
+        {name}
+
+        Startup Idea:
+        {idea}
+
+        Target Customers:
+        {potential_customers}
+
+        Evaluate based on:
+
+        - Market Opportunity
+        - Problem-Solution Fit
+        - Product Differentiation
+        - Competitive Advantage (Moat)
+        - Scalability
+        - Business Model
+        - Revenue Potential
+        - Customer Acquisition Potential
+        - Team Requirements (if inferable)
+        - Market Risks
+        - Execution Risks
+        - Funding Readiness
+
+        Score the startup from low to high based on:
+
+        - Innovation
+        - Market Size
+        - Scalability
+        - Investment Potential
+        - Risk Level
+
+        Also provide:
+
+        - Strengths
+        - Weaknesses
+        - Biggest Risks
+        - Investor Concerns
+        - Questions an investor would ask
+        - Recommendations before raising funds
+
+        Return ONLY a JSON object with these fields:
+
+        Investment Score
+        Funding Stage
+        Strengths
+        Weaknesses
+        Risks
+        Investor Questions
+        Recommendations
+        Overall Verdict
+    """
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an expert startup advisor."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.3,
+        response_format={"type": "json_object"},
+    )
+
+    try:
+        result = json.loads(response.choices[0].message.content)
+    except json.JSONDecodeError:
+        raise ValueError("LLM returned invalid JSON.")
+
+    return result
+
+#Complete All-In-One Startup Report  -->
+
+@mcp.tool(
+    name="All-In-One Startup Report",
+    description="Provides a comprehensive evaluation of a given startup idea."
+)
+def validate_startup_idea(
+    name: str = Field(description="Startup name"),
+    idea: str = Field(description="Startup idea"),
+    potential_customers: str = Field(description="Target customers"),
+    website_link: str = Field(description="Website link for the landing page"),
+):
+    if not all([
+        name.strip(),
+        idea.strip(),
+        potential_customers.strip(),
+        website_link.strip()
+    ]):
+
+        raise ValueError("All fields are required.")
+
+    prompt = f"""
+        You are a senior startup advisor, venture capitalist, product strategist, market analyst, pricing consultant, UX expert, and business consultant.
+
+        Perform a comprehensive evaluation of the following startup.
+
+        Startup Name:
+        {name}
+
+        Startup Idea:
+        {idea}
+
+        Target Customers:
+        {potential_customers}
+
+        Website:
+        {website_link}
+
+        Provide a concise but comprehensive report covering:
+
+        Business Analysis
+        - Startup validation
+        - Problem-Solution Fit
+        - Uniqueness
+        - Innovation Score
+
+        Market Research
+        - Market Opportunity
+        - Industry Trends
+        - Target Audience
+        - Growth Potential
+
+        Competitor Analysis
+        - Major Competitors
+        - Competitive Advantages
+        - Weaknesses Compared to Competitors
+
+        Pricing Analysis
+        - Recommended Pricing
+        - Competitor Pricing
+        - Freemium/Premium Suggestions
+
+        Product Strategy
+        - Core Features
+        - Premium Features
+        - AI Opportunities
+        - Future Roadmap
+
+        Website Audit (if website is accessible)
+        - UX
+        - Design
+        - Navigation
+        - Conversion Optimization
+        - SEO
+        - Branding
+
+        Investor Perspective
+        - Investment Readiness
+        - Scalability
+        - Risks
+        - Funding Potential
+
+        Marketing Strategy
+        - Go-To-Market Strategy
+        - Customer Acquisition Channels
+        - SEO Opportunities
+        - Social Media Strategy
+
+        Score the startup from low to high based on:
+
+        - Innovation
+        - Market Potential
+        - Product Quality
+        - Business Model
+        - Scalability
+        - Investment Potential
+        - Website Quality (if applicable)
+
+        Finally provide:
+
+        - Top Strengths
+        - Top Weaknesses
+        - Biggest Opportunities
+        - Biggest Threats
+        - Immediate Next Steps
+        - Long-Term Recommendations
+
+        Return ONLY a JSON object with these fields:
+
+        Startup Validation
+        Market Analysis
+        Competitor Analysis
+        Pricing Analysis
+        Suggested Features
+        Website Audit
+        Investor Analysis
+        Marketing Strategy
+        Scores
+        Recommendations
+        Executive Summary
+    """
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an expert startup advisor."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.3,
+        response_format={"type": "json_object"},
+    )
+
+    try:
+        result = json.loads(response.choices[0].message.content)
+    except json.JSONDecodeError:
+        raise ValueError("LLM returned invalid JSON.")
+
+    return result
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
