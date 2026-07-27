@@ -4,6 +4,8 @@
 
 </br>
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+</div>
 </br>
 
 An AI-powered **Model Context Protocol (MCP)** server that acts as a virtual startup consultant. It helps founders, entrepreneurs, and product teams validate ideas, analyze competitors, research pricing, audit websites, and generate investor-focused insights using Large Language Models.
