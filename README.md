@@ -37,7 +37,7 @@ AI-Startup-MCP/
 │
 ├── mcp_server.py
 ├── requirements.txt
-├── .env.example
+├── LICENSE
 ├── .gitignore
 │
 └── README.md
